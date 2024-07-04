@@ -1,6 +1,6 @@
 <script setup>
 // ref is like use state in React
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 // Using Composition API
 const name = ref("John Doe");
@@ -28,6 +28,16 @@ const addTask = () => {
 const deleteTask = (index) => {
   tasks.value.splice(index, 1);
 };
+
+onMounted(async () => {
+  try {
+    const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+    const data = await res.json();
+    tasks.value = data.map((task) => task.title);
+  } catch (error) {
+    console.log(error);
+  }
+});
 </script>
 
 <template>

@@ -1,12 +1,16 @@
 <script>
-// Using Composition API
+// Demo use of Options logic instead of Composition
 export default {
-  setup() {
-    const name = "John Doe";
-    const status = "active";
-    const tasks = ["task 1", "task 2", "task 3"];
-
-    const toggleStatus = () => {
+  data() {
+    return {
+      name: "John Doe",
+      status: "pending",
+      tasks: ["task one", "task two", "task three"],
+      link: "https://google.com",
+    };
+  },
+  methods: {
+    toggleStatus() {
       if (this.status == "active") {
         this.status = "pending";
       } else if (this.status === "pending") {
@@ -14,13 +18,7 @@ export default {
       } else {
         this.status = "active";
       }
-    };
-    return {
-      name,
-      status,
-      tasks,
-      toggleStatus,
-    };
+    },
   },
 };
 </script>
@@ -35,6 +33,8 @@ export default {
   <ul>
     <li v-for="task in tasks" :key="task">{{ task }}</li>
   </ul>
+  <!-- <a v-bind:href="link">Click for Google</a> -->
+  <a :href="link">Click for Google</a>
   <br />
   <!-- <button v-on:click="toggleStatus">Change Status</button> -->
   <button @click="toggleStatus">Change Status</button>

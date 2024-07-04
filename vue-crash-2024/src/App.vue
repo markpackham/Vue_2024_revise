@@ -1,18 +1,20 @@
 <script>
+import { ref } from "vue";
+
 // Using Composition API
 export default {
   setup() {
-    const name = "John Doe";
-    const status = "active";
-    const tasks = ["task 1", "task 2", "task 3"];
+    const name = ref("John Doe");
+    const status = ref("active");
+    const tasks = ref(["task 1", "task 2", "task 3"]);
 
     const toggleStatus = () => {
-      if (this.status == "active") {
-        this.status = "pending";
-      } else if (this.status === "pending") {
-        this.status = "inactive";
+      if (status.value == "active") {
+        status.value = "pending";
+      } else if (status.value === "pending") {
+        status.value = "inactive";
       } else {
-        this.status = "active";
+        status.value = "active";
       }
     };
     return {

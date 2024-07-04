@@ -1,4 +1,5 @@
 <script setup>
+import JobListing from "./JobListing.vue";
 import jobsData from "@/jobs1.json";
 import { ref } from "vue";
 
@@ -12,9 +13,7 @@ const jobs = ref(jobsData);
         Browse Jobs
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div v-for="job in jobs" :key="job.id">
-          {{ job.title }}
-        </div>
+        <JobListing v-for="job in jobs" :key="job.id" :job="job" />
       </div>
     </div>
   </section>

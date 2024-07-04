@@ -9,5 +9,5 @@ import Navbar from "@/components/Navbar.vue";
   <Navbar />
   <Hero />
   <HomeCards />
-  <JobListings />
+  <JobListings :limit="5" />
 </template>

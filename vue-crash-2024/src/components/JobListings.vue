@@ -15,7 +15,7 @@ defineProps({
 });
 
 // const jobs = ref(jobsData);
-// Using reactive instead of ref
+// Using reactive instead of ref which is optional, ref would work fine
 // const jobs = ref([]);
 
 const state = reactive({
@@ -26,9 +26,12 @@ const state = reactive({
 onMounted(async () => {
   try {
     const response = await axios.get("http://localhost:8888/jobs");
-    jobs.value = response.data;
+    state.jobs = response.data;
   } catch (error) {
     console.error("Error fetching jobs ", error);
+  } finally {
+    // "finally" will run no matter if a try or a catch is hit
+    state.isLoading = false;
   }
 });
 </script>
@@ -41,7 +44,7 @@ onMounted(async () => {
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <JobListing
-          v-for="job in jobs.slice(0, limit || jobs.length)"
+          v-for="job in state.jobs.slice(0, limit || state.jobs.length)"
           :key="job.id"
           :job="job"
         />

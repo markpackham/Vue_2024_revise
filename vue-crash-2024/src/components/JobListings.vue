@@ -1,7 +1,9 @@
 <script setup>
+import { ref, defineProps } from "vue";
+import { RouterLink } from "vue-router";
+
 import JobListing from "./JobListing.vue";
 import jobsData from "@/jobs1.json";
-import { ref, defineProps } from "vue";
 
 defineProps({
   limit: Number,
@@ -31,10 +33,10 @@ const jobs = ref(jobsData);
   </section>
 
   <section v-if="showButton" class="m-auto max-w-lg my-10 px-6">
-    <a
-      href="/jobs"
+    <RouterLink
+      to="/jobs"
       class="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
-      >View All Jobs</a
+      >View All Jobs</RouterLink
     >
   </section>
 </template>

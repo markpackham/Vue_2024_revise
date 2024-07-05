@@ -1,6 +1,6 @@
 <script setup>
 import axios from "axios";
-import { ref, defineProps, onMounted } from "vue";
+import { reactive, ref, defineProps, onMounted } from "vue";
 import { RouterLink } from "vue-router";
 
 import JobListing from "./JobListing.vue";
@@ -15,7 +15,13 @@ defineProps({
 });
 
 // const jobs = ref(jobsData);
-const jobs = ref([]);
+// Using reactive instead of ref
+// const jobs = ref([]);
+
+const state = reactive({
+  jobs: [],
+  isLoading: true,
+});
 
 onMounted(async () => {
   try {

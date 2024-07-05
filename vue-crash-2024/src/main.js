@@ -15,3 +15,5 @@ const app = createApp(App);
 app.use(router);
 
 app.mount("#app");
+
+// json-server path http://localhost:8888/jobs

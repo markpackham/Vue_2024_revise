@@ -3,7 +3,7 @@ import { ref, defineProps } from "vue";
 import { RouterLink } from "vue-router";
 
 import JobListing from "./JobListing.vue";
-import jobsData from "@/jobs1.json";
+// import jobsData from "@/jobs1.json";
 
 defineProps({
   limit: Number,
@@ -13,7 +13,8 @@ defineProps({
   },
 });
 
-const jobs = ref(jobsData);
+// const jobs = ref(jobsData);
+const jobs = ref([]);
 </script>
 
 <template>
